@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#ff7a70" />
+    <meta name="description" content="Интерактивный пример HTML-ссылки в WebLab for Kids." />
+    <title>Я — ссылка | WebLab for Kids</title>
+    <link rel="stylesheet" href="./styles.css?v=17" />
+    <script src="./i18n.js?v=13" defer></script>
+    <script src="./link-page.js?v=13" defer></script>
+  </head>
+  <body class="link-page-body" data-page="link">
+    <a class="skip-link" href="#link-example" data-i18n="skip.example">Перейти к примеру</a>
+
+    <header class="site-header">
+      <a class="brand" href="./index.html" aria-label="WebLab for Kids — вернуться на главную" data-i18n-aria="brand.back">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 40 40" role="img">
+            <path d="M15 7h10M17 7v9L9.8 28.4A4 4 0 0 0 13.2 34h13.6a4 4 0 0 0 3.4-5.6L23 16V7" />
+            <path d="M13 27h14" />
+            <circle cx="18" cy="23" r="1.5" />
+            <circle cx="23.5" cy="28.5" r="1.5" />
+          </svg>
+        </span>
+        <span>WebLab <em>for Kids</em></span>
+      </a>
+      <nav class="language-switcher" aria-label="Выбор языка" data-i18n-aria="language.label">
+        <button class="language-option active" type="button" data-language="ru" aria-pressed="true">RU</button>
+        <button class="language-option" type="button" data-language="ro" aria-pressed="false">RO</button>
+      </nav>
+    </header>
+
+    <main class="link-page" id="link-example">
+      <div class="link-lesson-card">
+        <div class="link-lesson-copy">
+          <span class="experiment-tag html-tag-label">HTML</span>
+          <p class="eyebrow" data-i18n="link.eyebrow">Ты перешёл на новую страницу</p>
+          <h1 data-i18n-html="link.title">Вот как работает <span>ссылка</span></h1>
+          <p data-i18n-html="link.text">
+            Тег <code>&lt;a&gt;</code> помогает перейти в другое место: на новую страницу,
+            к картинке или к полезному сайту.
+          </p>
+          <a class="back-to-lab" href="./index.html#lab" data-i18n="link.back">← Вернуться к опытам</a>
+        </div>
+
+        <div class="lion-hello-card" aria-live="polite">
+          <div class="lion-speech">
+            <strong id="lion-greeting" data-i18n="greeting.friend">Привет, друг!</strong>
+            <span data-i18n="link.speech">Я — ссылка 👋</span>
+          </div>
+          <div class="hello-lion" role="img" aria-label="Лев машет лапой" data-i18n-aria="link.lion">
+            <span class="hello-lion-body"></span>
+            <span class="hello-lion-leg leg-left"></span>
+            <span class="hello-lion-leg leg-right"></span>
+            <span class="hello-lion-arm arm-rest"><span></span></span>
+            <span class="hello-lion-arm arm-wave"><span></span></span>
+            <span class="hello-lion-mane"></span>
+            <span class="hello-lion-ear ear-left"></span>
+            <span class="hello-lion-ear ear-right"></span>
+            <span class="hello-lion-face">
+              <span class="hello-brow brow-left"></span>
+              <span class="hello-brow brow-right"></span>
+              <span class="hello-eye eye-left"></span>
+              <span class="hello-eye eye-right"></span>
+              <span class="hello-muzzle"></span>
+              <span class="hello-nose"></span>
+              <span class="hello-smile"></span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
