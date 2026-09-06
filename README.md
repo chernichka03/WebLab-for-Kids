@@ -28,7 +28,7 @@
 </div>
 
 > [!IMPORTANT]
-> **Ссылка на сайт после публикации:** [Открыть WebLab for Kids]((https://chernichka03.github.io/WebLab-for-Kids/))
+> **Ссылка на сайт после публикации:** [Открыть WebLab for Kids](https://chernichka03.github.io/WebLab-for-Kids/)
 
 ## О проекте
 
