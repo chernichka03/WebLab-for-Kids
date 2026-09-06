@@ -20,8 +20,6 @@
 </p>
 
 <p>
-  <a href="#быстрый-старт"><strong>Быстрый старт</strong></a>
-  ·
   <a href="#публикация-на-github-pages"><strong>GitHub Pages</strong></a>
   ·
   <a href="#все-интерактивные-возможности"><strong>Все интерактивы</strong></a>
