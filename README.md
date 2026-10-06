@@ -4,7 +4,7 @@
 
 **HTML · CSS · JavaScript · RU / RO · адаптивная вёрстка · без зависимостей для работы сайта**
 
-[Открыть WebLab for Kids](dist/index.html)
+[Открыть WebLab for Kids]([dist/index.html](https://chernichka03.github.io/WebLab-for-Kids/dist/index.html))
 
 ![Главная страница](docs/screenshots/home.png)
 
