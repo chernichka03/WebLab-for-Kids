@@ -11,7 +11,7 @@
     <meta name="robots" content="noindex, nofollow" />
     <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
     <title>WebLab for Kids — создавай сайты играючи</title>
-    <link rel="stylesheet" href="./styles.css?v=20" />
+    <link rel="stylesheet" href="./styles.css?v=21" />
     <script src="./state.js?v=20" defer></script>
     <script src="./i18n.js?v=20" defer></script>
     <script src="./script.js?v=20" defer></script>
@@ -181,10 +181,10 @@
                   <button type="button" class="animal-choice" data-animal="dolphin" data-i18n="animal.dolphin" aria-pressed="false">Дельфин</button>
                 </div>
               </fieldset>
-              <p class="attempt-count" id="design-attempts" role="status"></p>
             </div>
-            <div class="experiment-preview color-preview preview-purple" id="color-preview" role="img" aria-label="Лев на фиолетовой карточке" aria-live="polite">
-              <div class="animal-stage" aria-hidden="true">
+            <div class="experiment-preview color-preview preview-purple" id="color-preview" role="group" aria-label="Лев на фиолетовой карточке" aria-live="polite">
+              <div class="color-preview-faces">
+                <div class="animal-stage" id="animal-face" aria-hidden="true">
                 <div class="animal animal-lion is-active" data-animal-art="lion">
                   <span class="lion-mane"></span>
                   <span class="lion-ear lion-ear-left"></span>
@@ -212,7 +212,14 @@
                   <span class="animal-ref-shape"></span>
                   <span class="dolphin-ref-eye"></span>
                 </div>
+                </div>
+                <div class="color-code-panel" id="color-code-panel" aria-hidden="true">
+                  <span class="code-language">CSS</span>
+                  <pre><code id="color-code"></code></pre>
+                  <p data-i18n="design.codeHelp">CSS задаёт цвет карточки и показывает выбранное животное.</p>
+                </div>
               </div>
+              <button class="code-toggle color-code-toggle" id="color-code-toggle" type="button" aria-expanded="false" aria-controls="color-code-panel" data-i18n="design.showCode">Как это работает?</button>
             </div>
           </article>
 
@@ -229,7 +236,6 @@
                 <button type="button" data-tag="button" aria-pressed="false">&lt;button&gt;</button>
                 <button type="button" data-tag="link" aria-pressed="false">&lt;a&gt;</button>
               </div>
-              <p class="attempt-count" id="tag-attempts" role="status"></p>
             </div>
             <div class="experiment-preview tag-preview">
               <span class="preview-label" data-i18n="tags.beforeAfter">Было → стало</span>

@@ -8,8 +8,12 @@
   const tagResult = $('#tag-result');
   const greetingPreview = $('#greeting-preview');
   const codeToggle = $('#greeting-code-toggle');
+  const designPreview = $('#color-preview');
+  const designCodeToggle = $('#color-code-toggle');
   let codeOpen = false;
   let codePinned = false;
+  let designCodeOpen = false;
+  let designCodePinned = false;
   let buttonClicked = false;
   let sparkTimer;
   function complete(task, patch = {}) {
@@ -41,13 +45,19 @@
     if (document.activeElement !== nameInput) nameInput.value = name;
   }
   function renderDesign() {
-    const { color, animal, triedColors, triedAnimals } = store.current;
-    $('#design-attempts').textContent = t('design.attempts', { colors: triedColors.length, animals: triedAnimals.length });
+    const { color, animal } = store.current;
     const preview = $('#color-preview');
     preview.className = `experiment-preview color-preview preview-${color}`;
     preview.setAttribute('aria-label', t('design.preview', {
       animal: t(`animal.${animal}`), color: t(`color.${color}Form`)
     }));
+    const colorStyles = {
+      purple: ['#eeeaff', '#d7d0ff'], coral: ['#fff0ec', '#ffd0ca'],
+      mint: ['#e4faf4', '#b7eddf'], yellow: ['#fff4c8', '#f4df8d']
+    };
+    const [background, border] = colorStyles[color];
+    $('#color-code').textContent = `.preview-${color} {\n  background: ${background};\n  border-color: ${border};\n}\n\n.animal-${animal} {\n  opacity: 1;\n}`;
+    designCodeToggle.textContent = t(designCodeOpen ? 'design.hideCode' : 'design.showCode');
     $$('[data-animal-art]').forEach(el => el.classList.toggle('is-active', el.dataset.animalArt === animal));
     for (const type of ['color', 'animal']) {
       $$(`.${type}-choice`).forEach(el => {
@@ -59,9 +69,7 @@
   }
   function renderTag() {
     clearTimeout(sparkTimer);
-    const { tag, triedTags, completed } = store.current;
-    $('#tag-attempts').textContent = completed.includes('tag') ? ''
-      : triedTags.length === 4 ? t('tags.finishHint') : t('tags.attempts', { count: triedTags.length });
+    const { tag } = store.current;
     const definitions = {
       strong: ['strong', 'tag.strongText'], mark: ['mark', 'tag.markText'],
       button: ['button', 'tag.buttonText'], link: ['a', 'tag.linkText']
@@ -168,6 +176,14 @@
     $('#greeting-code-panel').setAttribute('aria-hidden', String(!open));
     $('#greeting-face').setAttribute('aria-hidden', String(open));
   }
+  function setDesignCodeOpen(open) {
+    designCodeOpen = open;
+    designPreview.classList.toggle('code-open', open);
+    designCodeToggle.setAttribute('aria-expanded', String(open));
+    designCodeToggle.textContent = t(open ? 'design.hideCode' : 'design.showCode');
+    $('#color-code-panel').setAttribute('aria-hidden', String(!open));
+    $('#animal-face').setAttribute('aria-hidden', String(open));
+  }
   greetingPreview.addEventListener('pointerenter', event => {
     if (event.pointerType === 'mouse') setCodeOpen(true);
   });
@@ -178,9 +194,18 @@
   });
   document.addEventListener('click', event => {
     if (!greetingPreview.contains(event.target)) { codePinned = false; setCodeOpen(false); }
+    if (!designPreview.contains(event.target)) { designCodePinned = false; setDesignCodeOpen(false); }
+  });
+  designPreview.addEventListener('pointerenter', event => {
+    if (event.pointerType === 'mouse') setDesignCodeOpen(true);
+  });
+  designPreview.addEventListener('pointerleave', () => { if (!designCodePinned) setDesignCodeOpen(false); });
+  designCodeToggle.addEventListener('click', () => { designCodePinned = !designCodeOpen; setDesignCodeOpen(designCodePinned); });
+  designPreview.addEventListener('keydown', event => {
+    if (event.key === 'Escape') { designCodePinned = false; setDesignCodeOpen(false); }
   });
   $('#reset-button').addEventListener('click', () => {
-    buttonClicked = false; codePinned = false; setCodeOpen(false); nameError.hidden = true; nameInput.removeAttribute('aria-invalid');
+    buttonClicked = false; codePinned = false; setCodeOpen(false); designCodePinned = false; setDesignCodeOpen(false); nameError.hidden = true; nameInput.removeAttribute('aria-invalid');
     store.reset(); nameInput.value = ''; nameInput.focus({ preventScroll: true });
     $('#name-form').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'center' });
   });

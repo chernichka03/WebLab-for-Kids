@@ -815,7 +815,6 @@ h1 span::after {
 .greeting-code-panel pre { margin: 12px 0; white-space: pre-wrap; overflow-wrap: anywhere; font-size: 0.875rem; line-height: 1.5; }
 .greeting-preview .greeting-code-panel p { font-size: 0.875rem; line-height: 1.5; }
 .code-toggle { min-height: 44px; margin-top: 12px; padding: 8px 14px; border: 1px solid #bfd8ef; border-radius: 10px; background: rgba(255, 255, 255, 0.8); color: var(--purple-dark); font-size: 0.875rem; font-weight: 700; cursor: pointer; }
-.experiment-copy .attempt-count { margin: 16px 0 0; color: var(--purple-dark); font-size: 0.875rem; font-weight: 700; line-height: 1.5; }
 
 .wave {
   margin-bottom: 10px;
@@ -917,6 +916,31 @@ h1 span::after {
   --animal-light: #f1efff;
   transition: background 180ms ease, border-color 180ms ease;
 }
+
+.color-preview-faces {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  width: 100%;
+  min-height: 170px;
+}
+
+.color-preview-faces > div {
+  grid-area: 1 / 1;
+  min-width: 0;
+}
+
+.color-code-panel {
+  visibility: hidden;
+  width: 100%;
+  color: var(--ink);
+  text-align: left;
+}
+
+.color-preview.code-open .color-code-panel { visibility: visible; }
+.color-preview.code-open #animal-face { visibility: hidden; }
+.color-code-panel pre { margin: 12px 0; white-space: pre-wrap; overflow-wrap: anywhere; font-size: 0.875rem; line-height: 1.5; }
+.color-preview .color-code-panel p { font-size: 0.875rem; line-height: 1.5; }
 
 .preview-purple {
   --animal-main: var(--purple);
