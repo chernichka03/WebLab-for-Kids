@@ -4,7 +4,7 @@
 
 **HTML · CSS · JavaScript · RU / RO · адаптивная вёрстка · без зависимостей для работы сайта**
 
-[Открыть приватную версию](https://weblab-for-kids-md.h0rsep0wer.chatgpt.site) - доступ владельцу через его аккаунт ChatGPT.
+[Открыть приватную версию]
 
 ![Главная страница](docs/screenshots/home.png)
 
