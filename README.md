@@ -6,7 +6,8 @@
 
 [Открыть приватную версию]
 
-![Главная страница](docs/screenshots/home.png)
+![Главная страница](<img width="1359" height="937" alt="image" src="https://github.com/user-attachments/assets/12db5009-6a09-4e9c-a745-f8d552918163" />
+)
 
 ## Что можно попробовать
 
