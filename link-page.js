@@ -1,20 +1,17 @@
-const NAME_STORAGE_KEY = "weblab-kid-name";
-const greeting = document.querySelector("#lion-greeting");
-const translate = (key, values) => window.webLabI18n.t(key, values);
-
-let savedName = "";
-
-try {
-  savedName = window.localStorage.getItem(NAME_STORAGE_KEY)?.trim() || "";
-} catch {
-  savedName = "";
-}
-
-function updateLionGreeting() {
-  greeting.textContent = savedName
-    ? translate("greeting.named", { name: savedName })
-    : translate("greeting.friend");
-}
-
-updateLionGreeting();
-window.addEventListener("weblab:languagechange", updateLionGreeting);
+(() => {
+  // Complete the HTML lesson on arrival, after all four tags have been tried.
+  window.webLabState.visitTagLink();
+  window.addEventListener('pageshow', event => {
+    if (event.persisted) window.webLabState.visitTagLink();
+  });
+  function renderLinkPage() {
+    const { name, completed } = window.webLabState.current;
+    const t = window.webLabI18n.t;
+    document.querySelector('#lion-greeting').textContent = name
+      ? t('greeting.named', { name }) : t('greeting.friend');
+    document.querySelector('#link-progress').textContent = t('progress.value', { count: completed.length });
+  }
+  renderLinkPage();
+  window.addEventListener('weblab:languagechange', renderLinkPage);
+  window.addEventListener('weblab:statechange', renderLinkPage);
+})();

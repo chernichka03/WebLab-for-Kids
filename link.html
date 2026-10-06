@@ -5,14 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#ff7a70" />
     <meta name="description" content="Интерактивный пример HTML-ссылки в WebLab for Kids." />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
     <title>Я — ссылка | WebLab for Kids</title>
-    <link rel="stylesheet" href="./styles.css?v=17" />
-    <script src="./i18n.js?v=13" defer></script>
-    <script src="./link-page.js?v=13" defer></script>
+    <link rel="stylesheet" href="./styles.css?v=20" />
+    <script src="./state.js?v=20" defer></script>
+    <script src="./i18n.js?v=20" defer></script>
+    <script src="./link-page.js?v=20" defer></script>
   </head>
   <body class="link-page-body" data-page="link">
     <a class="skip-link" href="#link-example" data-i18n="skip.example">Перейти к примеру</a>
 
+    <noscript><p class="noscript-note">Для заданий включи JavaScript в браузере. / Activează JavaScript pentru exerciții.</p></noscript>
     <header class="site-header">
       <a class="brand" href="./index.html" aria-label="WebLab for Kids — вернуться на главную" data-i18n-aria="brand.back">
         <span class="brand-mark" aria-hidden="true">
@@ -34,13 +38,13 @@
     <main class="link-page" id="link-example">
       <div class="link-lesson-card">
         <div class="link-lesson-copy">
-          <span class="experiment-tag html-tag-label">HTML</span>
           <p class="eyebrow" data-i18n="link.eyebrow">Ты перешёл на новую страницу</p>
           <h1 data-i18n-html="link.title">Вот как работает <span>ссылка</span></h1>
           <p data-i18n-html="link.text">
             Тег <code>&lt;a&gt;</code> помогает перейти в другое место: на новую страницу,
             к картинке или к полезному сайту.
           </p>
+          <p class="link-progress" id="link-progress" aria-live="polite"></p>
           <a class="back-to-lab" href="./index.html#lab" data-i18n="link.back">← Вернуться к опытам</a>
         </div>
 

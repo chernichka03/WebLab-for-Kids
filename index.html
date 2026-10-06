@@ -8,14 +8,18 @@
       name="description"
       content="WebLab for Kids — интерактивная лаборатория, где дети знакомятся с HTML, CSS и JavaScript."
     />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
     <title>WebLab for Kids — создавай сайты играючи</title>
-    <link rel="stylesheet" href="./styles.css?v=17" />
-    <script src="./i18n.js?v=13" defer></script>
-    <script src="./script.js?v=13" defer></script>
+    <link rel="stylesheet" href="./styles.css?v=20" />
+    <script src="./state.js?v=20" defer></script>
+    <script src="./i18n.js?v=20" defer></script>
+    <script src="./script.js?v=20" defer></script>
   </head>
   <body data-page="index">
     <a class="skip-link" href="#lab" data-i18n="skip.tasks">Перейти к заданиям</a>
 
+    <noscript><p class="noscript-note">Для заданий включи JavaScript в браузере. / Activează JavaScript pentru exerciții.</p></noscript>
     <header class="site-header">
       <a class="brand" href="#top" aria-label="WebLab for Kids — на главную" data-i18n-aria="brand.home">
         <span class="brand-mark" aria-hidden="true">
@@ -37,7 +41,7 @@
     <main id="top">
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-copy">
-          <p class="eyebrow" data-i18n-html="hero.eyebrow"><span aria-hidden="true">✦</span> Твоя первая веб-лаборатория</p>
+          <p class="eyebrow" data-i18n-html="hero.eyebrow">Твоя первая веб-лаборатория</p>
           <h1 id="hero-title" data-i18n-html="hero.title">Узнай, из чего<br />сделаны <span>сайты</span></h1>
           <p class="hero-text" data-i18n="hero.text">
             Сайт похож на маленького робота: HTML собирает его тело, CSS выбирает внешний вид,
@@ -51,34 +55,32 @@
           <div class="orbit orbit-two" aria-hidden="true"></div>
           <div class="browser-card">
             <div class="browser-top" aria-hidden="true">
-              <span></span><span></span><span></span>
-              <div class="browser-address">WebLabForKids.com</div>
+              <div class="browser-address"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="m16 16 4 4"></path></svg><span>WebLabForKids.com</span></div>
             </div>
             <div class="browser-content">
               <span class="code-line html-line" data-i18n="hero.codeHello">&lt;h1&gt;Привет!&lt;/h1&gt;</span>
               <span class="code-line css-line">color: purple;</span>
-              <span class="code-line js-line">button.onclick = 🚀</span>
+              <span class="code-line js-line">button.onclick = play;</span>
               <div class="mini-site">
-                <span data-i18n-html="hero.miniGreeting"><span aria-hidden="true">👋</span> Привет, друг!</span>
+                <span id="mini-greeting"><span aria-hidden="true">👋</span> Привет, друг!</span>
                 <a class="mini-play-link" href="#lab" data-i18n="hero.play">Играть</a>
               </div>
             </div>
           </div>
           <span class="floating-badge badge-code" aria-hidden="true">&lt;/&gt;</span>
-          <span class="floating-badge badge-spark" aria-hidden="true">✦</span>
         </div>
 
         <div class="language-area" id="languages">
-          <div class="section-heading compact">
-            <p class="eyebrow" data-i18n="languages.eyebrow">Три главных помощника</p>
-            <h2 data-i18n="languages.title">Наведи курсор или нажми на карточку</h2>
+          <div class="section-heading language-heading">
+            <h2 data-i18n="languages.eyebrow">Три главных помощника</h2>
+            <p data-i18n="languages.title">Наведи курсор или нажми на карточку</p>
           </div>
 
           <div class="language-grid" aria-label="HTML, CSS и JavaScript" data-i18n-aria="languages.label">
             <button class="language-card html-card" type="button" aria-expanded="false">
               <strong>HTML</strong>
               <span class="short-description" data-i18n="html.short">Строит основу</span>
-              <span class="full-description" data-i18n="html.full">
+              <span class="full-description" aria-hidden="true" data-i18n="html.full">
                 Расставляет на странице заголовки, картинки, кнопки и всё остальное — как детали конструктора.
               </span>
             </button>
@@ -86,7 +88,7 @@
             <button class="language-card css-card" type="button" aria-expanded="false">
               <strong>CSS</strong>
               <span class="short-description" data-i18n="css.short">Добавляет стиль</span>
-              <span class="full-description" data-i18n="css.full">
+              <span class="full-description" aria-hidden="true" data-i18n="css.full">
                 Выбирает цвета, размеры и расположение деталей — словно дизайнер комнаты или одежды.
               </span>
             </button>
@@ -94,7 +96,7 @@
             <button class="language-card js-card" type="button" aria-expanded="false">
               <strong>JavaScript</strong>
               <span class="short-description" data-i18n="js.short">Оживляет страницу</span>
-              <span class="full-description" data-i18n="js.full">
+              <span class="full-description" aria-hidden="true" data-i18n="js.full">
                 Замечает клики и ввод текста, меняет страницу и делает её похожей на настоящую игру.
               </span>
             </button>
@@ -104,41 +106,55 @@
 
       <section class="lab" id="lab" aria-labelledby="lab-title">
         <div class="section-heading">
-          <p class="eyebrow" data-i18n-html="lab.eyebrow"><span aria-hidden="true">⚗</span> Пора экспериментировать</p>
+          <p class="eyebrow" data-i18n-html="lab.eyebrow">Пора экспериментировать</p>
           <h2 id="lab-title" data-i18n="lab.title">Попробуй сам</h2>
           <p data-i18n="lab.intro">Выполни три коротких опыта. Здесь ничего нельзя сломать!</p>
         </div>
 
         <div class="progress-wrap" aria-label="Прогресс заданий" data-i18n-aria="progress.label">
-          <div class="progress-label">
+          <div class="progress-label" aria-live="polite" aria-atomic="true">
             <span data-i18n="progress.done">Готово заданий</span>
             <strong><span id="progress-count">0</span> / 3</strong>
           </div>
-          <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="3" aria-valuenow="0">
+          <div class="progress-track" role="progressbar" aria-label="Прогресс заданий" data-i18n-aria="progress.label" aria-valuemin="0" aria-valuemax="3" aria-valuenow="0">
             <span id="progress-bar"></span>
           </div>
         </div>
+
+        <p class="storage-note" id="storage-note"></p>
 
         <div class="experiments">
           <article class="experiment" data-task="name">
             <div class="experiment-number" aria-hidden="true">01</div>
             <div class="experiment-copy">
               <span class="experiment-tag js-tag">JavaScript</span>
+              <span class="task-status" aria-live="polite"></span>
               <h3 data-i18n="name.title">Научи сайт здороваться</h3>
               <p data-i18n="name.text">Напиши имя — и страница ответит лично тебе.</p>
-              <form id="name-form" class="name-form">
+              <form id="name-form" class="name-form" novalidate>
                 <label for="name-input" data-i18n="name.label">Твоё имя</label>
                 <div class="input-row">
-                  <input id="name-input" type="text" maxlength="24" placeholder="Например, Маша" data-i18n-placeholder="name.placeholder" autocomplete="given-name" />
+                  <input id="name-input" type="text" maxlength="24" placeholder="Например, Маша" data-i18n-placeholder="name.placeholder" autocomplete="given-name" aria-describedby="name-error" required />
                   <button type="submit" data-i18n="name.submit">Поздороваться</button>
                 </div>
+                <p id="name-error" class="form-error" role="alert" hidden></p>
               </form>
             </div>
-            <div class="experiment-preview greeting-preview" aria-live="polite">
+            <div class="experiment-preview greeting-preview" id="greeting-preview">
               <span class="preview-label" data-i18n="preview.result">Результат</span>
-              <div class="wave" aria-hidden="true">👋</div>
-              <strong id="greeting-result" data-i18n="greeting.friend">Привет, друг!</strong>
-              <p data-i18n="greeting.welcome">Рад видеть тебя в WebLab.</p>
+              <div class="greeting-faces">
+                <div id="greeting-face" aria-live="polite">
+                  <div class="wave" aria-hidden="true">👋</div>
+                  <strong id="greeting-result" data-i18n="greeting.friend">Привет, друг!</strong>
+                  <p data-i18n="greeting.welcome">Рад видеть тебя в WebLab.</p>
+                </div>
+                <div class="greeting-code-panel" id="greeting-code-panel" aria-hidden="true">
+                  <span class="code-language">JavaScript</span>
+                  <pre><code id="greeting-code"></code></pre>
+                  <p data-i18n="name.codeHelp">Сохраняем приветствие в message и выводим его на странице через textContent.</p>
+                </div>
+              </div>
+              <button class="code-toggle" id="greeting-code-toggle" type="button" aria-expanded="false" aria-controls="greeting-code-panel" data-i18n="name.showCode">Как это работает?</button>
             </div>
           </article>
 
@@ -146,8 +162,9 @@
             <div class="experiment-number" aria-hidden="true">02</div>
             <div class="experiment-copy">
               <span class="experiment-tag css-tag-label">CSS</span>
+              <span class="task-status" aria-live="polite"></span>
               <h3 data-i18n="design.title">Стань дизайнером</h3>
-              <p data-i18n="design.text">Выбери цвет и животное — CSS мгновенно изменит карточку.</p>
+              <p data-i18n="design.text">Попробуй каждый из четырёх цветов и каждое из четырёх животных, чтобы завершить задание.</p>
               <fieldset class="color-picker">
                 <legend data-i18n="design.colorLegend">Выбери цвет карточки</legend>
                 <button type="button" class="color-choice purple active" data-color="purple" aria-label="Фиолетовый" data-i18n-aria="color.purple" aria-pressed="true"></button>
@@ -164,6 +181,7 @@
                   <button type="button" class="animal-choice" data-animal="dolphin" data-i18n="animal.dolphin" aria-pressed="false">Дельфин</button>
                 </div>
               </fieldset>
+              <p class="attempt-count" id="design-attempts" role="status"></p>
             </div>
             <div class="experiment-preview color-preview preview-purple" id="color-preview" role="img" aria-label="Лев на фиолетовой карточке" aria-live="polite">
               <div class="animal-stage" aria-hidden="true">
@@ -202,20 +220,22 @@
             <div class="experiment-number" aria-hidden="true">03</div>
             <div class="experiment-copy">
               <span class="experiment-tag html-tag-label">HTML</span>
+              <span class="task-status" aria-live="polite"></span>
               <h3 data-i18n="tags.title">Испытай HTML-теги</h3>
-              <p data-i18n="tags.text">Выбери тег и посмотри, что он делает на странице.</p>
+              <p data-i18n="tags.text">Попробуй все четыре тега. Затем выбери &lt;a&gt; и нажми «Открыть страницу», чтобы завершить задание.</p>
               <div class="tag-buttons" role="group" aria-label="HTML-теги" data-i18n-aria="tags.label">
                 <button type="button" data-tag="strong" class="active" aria-pressed="true">&lt;strong&gt;</button>
                 <button type="button" data-tag="mark" aria-pressed="false">&lt;mark&gt;</button>
                 <button type="button" data-tag="button" aria-pressed="false">&lt;button&gt;</button>
                 <button type="button" data-tag="link" aria-pressed="false">&lt;a&gt;</button>
               </div>
+              <p class="attempt-count" id="tag-attempts" role="status"></p>
             </div>
             <div class="experiment-preview tag-preview">
               <span class="preview-label" data-i18n="tags.beforeAfter">Было → стало</span>
-              <div class="tag-code" id="tag-code">&lt;strong&gt;Я важный текст!&lt;/strong&gt;</div>
+              <code class="tag-code" id="tag-code">&lt;strong&gt;Я важный текст!&lt;/strong&gt;</code>
               <div class="tag-result" id="tag-result"><strong>Я важный текст!</strong></div>
-              <p id="tag-explanation">Тег &lt;strong&gt; показывает, что текст важный.</p>
+              <p id="tag-explanation" aria-live="polite">Тег &lt;strong&gt; показывает, что текст важный.</p>
             </div>
           </article>
         </div>
